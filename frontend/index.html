@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Manager Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Library Pro</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="openModal('addBookModal')">+ Add New Book</button>
+            </div>
+        </header>
+
+        <section class="search-filter">
+             <div class="form-group" style="max-width: 400px;">
+                <input type="text" id="searchInput" placeholder="Search by title, author, or ISBN..." onkeyup="filterBooks()">
+             </div>
+        </section>
+
+        <div id="booksGrid" class="grid">
+            <!-- Books will be loaded here -->
+        </div>
+
+        <section class="popularity-section">
+            <h2>🔥 Most Popular</h2>
+            <div id="popularGrid" class="popularity-grid">
+                <!-- Popular books will be loaded here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Add Book Modal -->
+    <div id="addBookModal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Book</h2>
+            <form id="addBookForm">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label>Author</label>
+                    <input type="text" id="author" required>
+                </div>
+                <div class="form-group">
+                    <label>ISBN</label>
+                    <input type="text" id="isbn" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" id="category" required>
+                </div>
+                <div class="form-group">
+                    <label>Number of Copies</label>
+                    <input type="number" id="copies" required min="1">
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Save Book</button>
+                    <button type="button" class="btn" style="background: #334155;" onclick="closeModal('addBookModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Book Modal -->
+    <div id="updateBookModal" class="modal">
+        <div class="modal-content">
+            <h2>Update Book</h2>
+            <form id="updateBookForm">
+                <input type="hidden" id="updateIsbn">
+                <div class="form-group">
+                    <label>Admin Password</label>
+                    <input type="password" id="adminPass" required>
+                </div>
+                <div class="form-group">
+                    <label>New Title</label>
+                    <input type="text" id="uTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>New Author</label>
+                    <input type="text" id="uAuthor" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" id="uCategory" required>
+                </div>
+                <div class="form-group">
+                    <label>Copies</label>
+                    <input type="number" id="uCopies" required min="0">
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Update</button>
+                    <button type="button" class="btn" style="background: #334155;" onclick="closeModal('updateBookModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
